@@ -10,23 +10,23 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class StudentConfig {
+    // commented out to prevent duplicate entries
+    // @Bean
+    // CommandLineRunner commandLineRunner(StudentRepository repository) {
+    //     return args -> {
+    //         Student omer = new Student(
+    //             "Omer",
+    //             LocalDate.of(1997, Month.JULY, 9),
+    //             "omerhalidcinar@gmail.com");
 
-    @Bean
-    CommandLineRunner commandLineRunner(StudentRepository repository) {
-        return args -> {
-            Student omer = new Student(
-                "Omer",
-                LocalDate.of(1997, Month.JULY, 9),
-                "omerhalidcinar@gmail.com");
+    //         Student bilal = new Student(
+    //             "Bilal",
+    //             LocalDate.of(1997, Month.SEPTEMBER, 23),
+    //             "bllakcn35@gmail.com");
 
-            Student bilal = new Student(
-                "Bilal",
-                LocalDate.of(1997, Month.SEPTEMBER, 23),
-                "bllakcn35@gmail.com");
-
-            repository.saveAll(
-                List.of(omer, bilal)
-            );
-        };
-    }
+    //         repository.saveAll(
+    //             List.of(omer, bilal)
+    //         );
+    //     };
+    // }
 }
