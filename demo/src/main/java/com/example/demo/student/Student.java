@@ -5,6 +5,9 @@
 package com.example.demo.student;
 
 import java.time.LocalDate;
+import java.time.Period;
+
+import org.springframework.cglib.core.Local;
 
 import jakarta.annotation.Generated;
 import jakarta.persistence.Entity;
@@ -12,6 +15,8 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+
+import jakarta.persistence.*;
 
 @Entity
 @Table
@@ -31,6 +36,7 @@ public class Student{
  
     private Long id;
     private String name;
+    @Transient
     private Integer age;
     private LocalDate dob;
     private String email;
@@ -40,18 +46,16 @@ public class Student{
     }
 
     //Constructor with all fields
-    public Student(Long id, String name, Integer age, LocalDate dob, String email) {
+    public Student(Long id, String name, LocalDate dob, String email) {
         this.id = id;
         this.name = name;
-        this.age = age;
         this.dob = dob;
         this.email = email;
     }
 
     //Constructor without id because database will generate it
-    public Student(String name, Integer age, LocalDate dob, String email) {
+    public Student(String name, LocalDate dob, String email) {
         this.name = name;
-        this.age = age;
         this.dob = dob;
         this.email = email;
     }
@@ -80,7 +84,7 @@ public class Student{
 
     // Getter for age
     public Integer getAge() {
-        return age;
+        return Period.between(this.dob, LocalDate.now()).getYears();
     }
 
     // Setter for age
